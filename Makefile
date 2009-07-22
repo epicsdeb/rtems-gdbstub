@@ -12,7 +12,7 @@ CEXP_SOURCE_PATH=../cexp
 #must be lower-case 'yes' (no quotes) to enable
 USE_CEXP=yes
 #must be lower-case 'yes' (no quotes) to enable
-USE_LIBBSPEXT=no
+USE_LIBBSPEXT=yes
 
 # C source names, if any, go here -- minus the .c
 C_PIECES_CEXP_yes = rtems-stub.modini

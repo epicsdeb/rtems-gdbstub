@@ -1,0 +1,51 @@
+Source: rtems-gdbstub
+Section: unknown
+Priority: extra
+Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
+Build-Depends: debhelper (>= 7), rtems-cexp-mvme2100, rtems-cexp-mvme3100, rtems-cexp-mvme5500, rtems-cexp-pc386
+Standards-Version: 3.7.3
+Homepage: http://www.slac.stanford.edu/~strauman/rtems/software.html
+
+Package: rtems-gdbstub-doc
+Architecture: all
+Description: Telnet server for RTEMS
+ A telnet service for RTEMS
+ .
+ This package contains documentation
+
+Package: rtems-gdbstub-mvme2100
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rtems-cexp-mvme2100
+Recommends: rtems-gdbstub-doc
+Description: Telnet server for RTEMS
+ A telnet service for RTEMS
+ .
+ This package contains the generic image for the MVME2100 SBC.
+
+Package: rtems-gdbstub-mvme3100
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rtems-cexp-mvme3100
+Recommends: rtems-gdbstub-doc
+Description: Telnet server for RTEMS
+ A telnet service for RTEMS
+ .
+ This package contains the generic image for the MVME3100 SBC.
+
+Package: rtems-gdbstub-mvme5500
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rtems-cexp-mvme5500
+Recommends: rtems-gdbstub-doc
+Description: Telnet server for RTEMS
+ A telnet service for RTEMS
+ .
+ This package contains the generic image for the MVME5500 SBC.
+
+Package: rtems-gdbstub-pc386
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, rtems-cexp-pc386
+Recommends: rtems-gdbstub-doc
+Description: Telnet server for RTEMS
+ A telnet service for RTEMS
+ .
+ This package contains the generic image for 386 compatible CPU with standard
+ PC hardware.

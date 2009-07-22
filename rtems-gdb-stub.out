@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Introduction and Features}{}
+\BOOKMARK [2][-]{subsection.1.1}{Architecture}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Multithreading}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Cexp Support}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Supported Targets}{section.1}
+\BOOKMARK [2][-]{subsection.1.5}{Supported Connection Methods}{section.1}
+\BOOKMARK [2][-]{subsection.1.6}{GDB Patches}{section.1}
+\BOOKMARK [1][-]{section.2}{Building}{}
+\BOOKMARK [1][-]{section.3}{Debugging Session}{}
+\BOOKMARK [2][-]{subsection.3.1}{Prerequisites}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Starting the Debugging Agent}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Connecting to the Target}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Sharing the Console Serial Line}{subsection.3.3}
+\BOOKMARK [2][-]{subsection.3.4}{Switching Thread Context}{section.3}
+\BOOKMARK [2][-]{subsection.3.5}{Executing Subroutines on the Target}{section.3}
+\BOOKMARK [2][-]{subsection.3.6}{DDD Note}{section.3}
+\BOOKMARK [1][-]{section.4}{RTEMS Specific GDB Commands}{}
+\BOOKMARK [1][-]{section.5}{Example Session}{}

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Building</TITLE>
+<META NAME="description" CONTENT="Building">
+<META NAME="keywords" CONTENT="rtems-gdb-stub">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="rtems-gdb-stub.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="rtems-gdb-stub.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html87"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html83"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html77"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html85"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html88"
+  HREF="node4.html">Debugging Session</A>
+<B> Up:</B> <A NAME="tex2html84"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html78"
+  HREF="node2.html">Introduction and Features</A>
+ &nbsp; <B>  <A NAME="tex2html86"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+Building</A>
+</H1>
+For the prerequisites consult table&nbsp;<A HREF="#tbl:prereq">1</A>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="tbl:prereq"></A><A NAME="36"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1:</STRONG>
+Prerequisites</CAPTION>
+<TR><TD><IMG
+ WIDTH="528" HEIGHT="131" BORDER="0"
+ SRC="img4.png"
+ ALT="\begin{table}\begin{center}
+\begin{tabbing}
+target:\hspace{4em}\=$\bullet$\hspac...
+...}\&gt; (optional) CEXP $&gt;=$\ version 1.5.beta
+\end{tabbing}
+\end{center}\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+
+<UL>
+<LI>Change directory to the gdb source topdir, create a build
+  subdirectory (name of your choice), chdir there and configure
+  (besides `powerpc', the `i386' and 'm68k' CPUs are supported and the
+  cross-debugger may be configured accordingly)<A NAME="tex2html2"
+  HREF="footnode.html#foot177"><SUP><SPAN CLASS="arabic">1</SPAN></SUP></A>:
+<PRE>
+&gt;  mkdir build
+&gt;  cd build
+&gt;  ../configure --target=powerpc-rtems
+</PRE>
+
+<P>
+Compile by typing <TT>make</TT> (gnumake) and install manually:
+<PRE>
+&gt;  make
+&gt;  install -s gdb/gdb &lt;target-dir&gt;/powerpc-rtems-gdb
+</PRE>
+
+<P>
+If you want to install everything including documentation you
+  might need more elaborate <TT>configure</TT> options to get the
+  install locations and the executable name right.
+
+<P>
+</LI>
+<LI>The target agent is part of the <TT>ssrlApps</TT> package and
+  should be build automatically as part of that package.
+  If you don't want to use libbspExt (on powerpc) or Cexp
+  you have to redefine the respective <TT>USE_xxx</TT> variables
+  in the <TT>Makefile</TT>.
+
+<P>
+Note that if you <EM>do</EM> use those packages then you must
+  make sure that your application executes the respective initialization
+  routines (<TT>bspExtInit()</TT> and <TT>cexpInit()</TT>, respectively;
+  consult the header files for any arguments and/or return value).
+
+<P>
+If you try to build <EM>rtems-gdb-stub</EM> independently from
+  <TT>ssrlApps</TT>, an additional step is required because
+  the agent needs a private header file, <EM>cexpmodP.h</EM>,
+  from Cexp (only if Cexp support is to be used) that is <EM>not</EM>
+  installed with the Cexp package: Edit the Makefile
+  and point the <TT>CEXP_SOURCE_PATH</TT> variable to the
+  correct location.
+
+<P>
+</LI>
+<LI>As with any RTEMS application, you must not forget to link all
+  required RTEMS managers - otherwise you incur what seem to be
+  obscure errors. If you have plenty of memory then simply including
+  all managers by setting
+  <TT>MANAGERS=all</TT> in your <TT>Makefile</TT> is most comfortable.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html87"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html83"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html77"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html85"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html88"
+  HREF="node4.html">Debugging Session</A>
+<B> Up:</B> <A NAME="tex2html84"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html78"
+  HREF="node2.html">Introduction and Features</A>
+ &nbsp; <B>  <A NAME="tex2html86"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+till
+2008-07-30
+</ADDRESS>
+</BODY>
+</HTML>

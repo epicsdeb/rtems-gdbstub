@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction and Features</TITLE>
+<META NAME="description" CONTENT="Introduction and Features">
+<META NAME="keywords" CONTENT="rtems-gdb-stub">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="rtems-gdb-stub.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="rtems-gdb-stub.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html69"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html65"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html59"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html67"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html70"
+  HREF="node3.html">Building</A>
+<B> Up:</B> <A NAME="tex2html66"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html60"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html68"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html71"
+  HREF="node2.html#SECTION00021000000000000000">Architecture</A>
+<LI><A NAME="tex2html72"
+  HREF="node2.html#SECTION00022000000000000000">Multithreading</A>
+<LI><A NAME="tex2html73"
+  HREF="node2.html#SECTION00023000000000000000">Cexp Support</A>
+<LI><A NAME="tex2html74"
+  HREF="node2.html#SECTION00024000000000000000">Supported Targets</A>
+<LI><A NAME="tex2html75"
+  HREF="node2.html#SECTION00025000000000000000">Supported Connection Methods</A>
+<LI><A NAME="tex2html76"
+  HREF="node2.html#SECTION00026000000000000000">GDB Patches</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00020000000000000000">
+Introduction and Features</A>
+</H1>
+
+<P>
+This document covers version 1.5 of the target agent.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Architecture</A>
+</H2>
+
+<P>
+This gdb stub is an implementation of the remote end of the
+GDB <EM>remote protocol</EM> for a RTEMS target. Unlike other stubs
+available for RTEMS (e.g., the m68k implementation), this
+version does NOT run at `exception' level but is intended to
+be less intrusive. It's primary use is debugging of user-level
+/ application code rather than the kernel itself (kernel
+debugging is still possible to a certain extent but the stub
+essentially needs a functional and initialized system to
+operate).
+
+<P>
+The stub runs as a `daemon task' executing debugging commands
+as demanded by the host gdb. Unlike a `low-level stub' which
+interrupts/stops the target system as a whole while talking
+to gdb, this implementation only affects the execution of
+one or multiple `target threads' leaving other tasks alone.
+
+<P>
+As a consequence, it is possible to use TCP/IP as a communication
+protocol (no breakpoints in networking must be set, though!).
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Multithreading</A>
+</H2>
+Gdb semantics expect the target system to be `interrupted' or
+`stopped' while listening to gdb commands. This implementation,
+OTOH, attempts to be as little intrusive as possible. For this
+purpose, a list of `stopped' tasks is maintained internally.
+Tasks are interrupted only as a result of hitting a breakpoint,
+incurring an exception or an explicit request by the debugger.
+Interrupted tasks can be inspected as usual (stack frame,
+register contents etc.) and can be `continued/resumed'.
+Only `stopped' tasks can be inspected - the others continue
+executing normally.
+
+<P>
+The stub also creates a special helper task context which is
+always interrupted when the target is stopped, hence it is
+possible to do non-task related
+work (inspect/change memory, disassemble, ...) without having
+to stop an application task.
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000">
+Cexp Support</A>
+</H2>
+A patch to `gdb' is provided extending the remote protocol
+in order to support loadable modules. Gdb can inquire the
+list of currently loaded modules and their section addresses
+as well as load/unload additional modules on the fly.
+
+<P>
+
+<H2><A NAME="SECTION00024000000000000000">
+Supported Targets</A>
+</H2>
+While many parts of the stub are intended to be portable
+and target-architecture independent, there are a few pieces of code
+which are BSP/CPU dependent. Currently, low-level support
+has been implemented for the i386/pc386, m68k/coldfire and
+powerpc/shared (and derived - should probably work on any
+`new-exception processing' ppc BSP) BSPs.
+
+<P>
+Adding support for a new target should not be extremely
+hard. It mainly consists of writing two routines for
+packing/unpacking register values into an array formatted
+as expected by gdb.
+Also, a low-level exception handler needs to be
+written (mostly for mapping exception codes to signal numbers).
+E.g., the i386/pc386 specific file consists of&nbsp;400 lines
+of quite straightforward code.
+
+<P>
+
+<H2><A NAME="SECTION00025000000000000000">
+Supported Connection Methods</A>
+</H2>
+One of the strengths of the gdb remote protocol is its simplicity
+which makes it possible to use many character-stream based
+I/O methods for exchanging messages.
+Currently, the stub supports TCP/IP, serial port communication
+via RTEMS' termios driver and plain ``dumb'' character devices
+as long as they can be accessed via the file-system (<TT>/dev/xzy</TT>).
+
+<P>
+
+<H2><A NAME="SECTION00026000000000000000">
+GDB Patches</A>
+</H2>
+One important design goal was not having to patch gdb itself.
+Unfortunately, it was not completely possible to meet this
+goal. However, the necessary patches are believed to be
+as small and as modular as possible.
+
+<P>
+
+<UL>
+<LI>A small patch is needed to fix a bug [has been submitted
+ as GDB bug #2029
+ but to-date, I don't know if it has been merged] in the
+ powerpc stack unwinding.
+</LI>
+<LI>A small patch is needed to make it possible to obtain
+ the list of tasks running on the target without interrupting
+ and stopping them all
+ (which would result in violating design goal #1: only
+ interrupt tasks on request [explicit or breakpoint]).
+</LI>
+<LI>An additional patch adds a new gdb target (``<TT>rtems-remote</TT>'')
+ with protocol
+ extentions to support loadable modules (CEXP). Note that
+ the stub works fine without CEXP, however.
+</LI>
+</UL>
+
+<P>
+All of these patches are usually available with the source-code
+of the stub as a ``<TT>.diff</TT>''-file of the format
+<TT>gdb-&lt;version&gt;-&lt;date&gt;.diff</TT>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html69"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html65"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html59"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html67"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html70"
+  HREF="node3.html">Building</A>
+<B> Up:</B> <A NAME="tex2html66"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html60"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html68"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+till
+2008-07-30
+</ADDRESS>
+</BODY>
+</HTML>

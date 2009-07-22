@@ -1,0 +1,293 @@
+pdflatex rtems-gdb-stub.tex	
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+entering extended mode
+(./rtems-gdb-stub.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/usr/share/texmf-tetex/tex/latex/base/article.cls
+Document Class: article 2004/02/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-tetex/tex/latex/base/size10.clo))
+(/usr/share/texmf-tetex/tex/latex/psnfss/bookman.sty)
+(/usr/share/texmf/tex/latex/html/html.sty
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-tetex/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf-tetex/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.cfg)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf-tetex/tex/latex/url/url.sty))
+*hyperref using driver hpdftex*
+(/usr/share/texmf-tetex/tex/latex/hyperref/hpdftex.def
+(/usr/share/texmf-tetex/tex/latex/psnfss/pifont.sty
+(/usr/share/texmf-tetex/tex/latex/psnfss/upzd.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/upsy.fd))))
+No file rtems-gdb-stub.aux.
+(/usr/share/texmf-tetex/tex/latex/psnfss/ot1pbk.fd)
+(/usr/share/texmf-tetex/tex/latex/hyperref/nameref.sty) [1{/var/lib/texmf/fonts
+/map/pdftex/updmap/pdftex.map}]
+(/usr/share/texmf-tetex/tex/latex/psnfss/ot1pcr.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/omspbk.fd) [2]
+
+LaTeX Warning: Reference `tbl:prereq' on page 3 undefined on input line 142.
+
+[3] [4] [5] [6] [7] [8] [9] (./rtems-gdb-stub.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )</usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-te
+tex/fonts/type1/bluesky/cm/cmmi10.pfb>{/usr/share/texmf-tetex/fonts/enc/dvips/p
+snfss/8r.enc}</usr/share/texmf-tetex/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
+hare/texmf-tetex/fonts/type1/urw/bookman/ubkli8a.pfb></usr/share/texmf-tetex/fo
+nts/type1/urw/bookman/ubkd8a.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm
+/cmsy10.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmmi12.pfb></usr/sha
+re/texmf-tetex/fonts/type1/urw/bookman/ubkl8a.pfb>
+Output written on rtems-gdb-stub.pdf (9 pages, 99934 bytes).
+Transcript written on rtems-gdb-stub.log.
+pdflatex rtems-gdb-stub.tex	
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+entering extended mode
+(./rtems-gdb-stub.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/usr/share/texmf-tetex/tex/latex/base/article.cls
+Document Class: article 2004/02/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-tetex/tex/latex/base/size10.clo))
+(/usr/share/texmf-tetex/tex/latex/psnfss/bookman.sty)
+(/usr/share/texmf/tex/latex/html/html.sty
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-tetex/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf-tetex/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.cfg)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf-tetex/tex/latex/url/url.sty))
+*hyperref using driver hpdftex*
+(/usr/share/texmf-tetex/tex/latex/hyperref/hpdftex.def
+(/usr/share/texmf-tetex/tex/latex/psnfss/pifont.sty
+(/usr/share/texmf-tetex/tex/latex/psnfss/upzd.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/upsy.fd)))) (./rtems-gdb-stub.aux)
+(/usr/share/texmf-tetex/tex/latex/psnfss/ot1pbk.fd)
+(/usr/share/texmf-tetex/tex/latex/hyperref/nameref.sty) (./rtems-gdb-stub.out)
+(./rtems-gdb-stub.out) (./rtems-gdb-stub.toc) [1{/var/lib/texmf/fonts/map/pdfte
+x/updmap/pdftex.map}] [2] (/usr/share/texmf-tetex/tex/latex/psnfss/ot1pcr.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/omspbk.fd) [3] [4] [5] [6] [7]
+[8] [9] [10] (./rtems-gdb-stub.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )</usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-te
+tex/fonts/type1/bluesky/cm/cmmi10.pfb>{/usr/share/texmf-tetex/fonts/enc/dvips/p
+snfss/8r.enc}</usr/share/texmf-tetex/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
+hare/texmf-tetex/fonts/type1/urw/bookman/ubkli8a.pfb></usr/share/texmf-tetex/fo
+nts/type1/urw/bookman/ubkd8a.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm
+/cmsy10.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmmi12.pfb></usr/sha
+re/texmf-tetex/fonts/type1/urw/bookman/ubkl8a.pfb>
+Output written on rtems-gdb-stub.pdf (10 pages, 109254 bytes).
+Transcript written on rtems-gdb-stub.log.
+pdflatex rtems-gdb-stub.tex	
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+entering extended mode
+(./rtems-gdb-stub.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/usr/share/texmf-tetex/tex/latex/base/article.cls
+Document Class: article 2004/02/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf-tetex/tex/latex/base/size10.clo))
+(/usr/share/texmf-tetex/tex/latex/psnfss/bookman.sty)
+(/usr/share/texmf/tex/latex/html/html.sty
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-tetex/tex/latex/graphics/keyval.sty)
+(/usr/share/texmf-tetex/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texmf-tetex/tex/latex/hyperref/hyperref.cfg)
+Implicit mode ON; LaTeX internals redefined
+(/usr/share/texmf-tetex/tex/latex/url/url.sty))
+*hyperref using driver hpdftex*
+(/usr/share/texmf-tetex/tex/latex/hyperref/hpdftex.def
+(/usr/share/texmf-tetex/tex/latex/psnfss/pifont.sty
+(/usr/share/texmf-tetex/tex/latex/psnfss/upzd.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/upsy.fd)))) (./rtems-gdb-stub.aux)
+(/usr/share/texmf-tetex/tex/latex/psnfss/ot1pbk.fd)
+(/usr/share/texmf-tetex/tex/latex/hyperref/nameref.sty) (./rtems-gdb-stub.out)
+(./rtems-gdb-stub.out) (./rtems-gdb-stub.toc) [1{/var/lib/texmf/fonts/map/pdfte
+x/updmap/pdftex.map}] [2] (/usr/share/texmf-tetex/tex/latex/psnfss/ot1pcr.fd)
+(/usr/share/texmf-tetex/tex/latex/psnfss/omspbk.fd) [3] [4] [5] [6] [7]
+[8] [9] [10] (./rtems-gdb-stub.aux) )</usr/share/texmf-tetex/fonts/type1/bluesk
+y/cm/cmr10.pfb></usr/share/texmf-tetex/fonts/type1/bluesky/cm/cmmi10.pfb>{/usr/
+share/texmf-tetex/fonts/enc/dvips/psnfss/8r.enc}</usr/share/texmf-tetex/fonts/t
+ype1/urw/courier/ucrr8a.pfb></usr/share/texmf-tetex/fonts/type1/urw/bookman/ubk
+li8a.pfb></usr/share/texmf-tetex/fonts/type1/urw/bookman/ubkd8a.pfb></usr/share
+/texmf-tetex/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf-tetex/fonts/ty
+pe1/bluesky/cm/cmmi12.pfb></usr/share/texmf-tetex/fonts/type1/urw/bookman/ubkl8
+a.pfb>
+Output written on rtems-gdb-stub.pdf (10 pages, 108934 bytes).
+Transcript written on rtems-gdb-stub.log.
+latex2html -split 4 -dir html rtems-gdb-stub
+This is LaTeX2HTML Version 2002-2-1 (1.71)
+by Nikos Drakos, Computer Based Learning Unit, University of Leeds.
+
+Revised and extended by:
+ Marcus Hennecke, Ross Moore, Herb Swan and others
+...producing markup for HTML version 4.0  
+
+
+
+Extension: loading /usr/share/latex2html/versions/latin1.pl
+HTML version: loading /usr/share/latex2html/versions/html4_0.pl
+
+ *** processing declarations ***
+
+OPENING /home/till/rtems/ssrlApps-test/rtems-gdb-stub/xx/RTEMS_gdb_stub_1_5/rtems-gdb-stub.tex 
+
+Cannot create directory html/: File exists, reusing it.
+
+Note: Working directory is /home/till/rtems/ssrlApps-test/rtems-gdb-stub/xx/RTEMS_gdb_stub_1_5/html
+Note: Images will be generated in /tmp/l2h23745
+
+texexpand V2002-2-1 (Revision 1.12)
+
+
+
+Loading /usr/share/latex2html/styles/texdefs.perl...
+Package: loading /usr/share/latex2html/styles/article.perl
+Package: loading /usr/share/latex2html/styles/html.perl
+Reading ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%''''''''''''''''''''''',,,++.........................................
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Reading aux file: /home/till/rtems/ssrlApps-test/rtems-gdb-stub/xx/RTEMS_gdb_stub_1_5/rtems-gdb-stub.aux ...
+Processing macros ...,,,++.....................................................................................
+Translating ...
+0/24:top of rtems-gdb-stub: for rtems-gdb-stub.html
+
+ *** translating preamble ***
+.,,,,...
+Warning: No implementation found for package: bookman....
+ *** preamble done ***
+;;.
+
+1/24:tableofcontents:.."Contents" for node1.html
+;.;.
+
+2/24:section:.."Introduction and Features" for node2.html
+;..;
+
+3/24:subsection:..."Architecture" for node2.html
+;.....;
+
+4/24:subsection:..."Multithreading" for node2.html
+;..;
+
+5/24:subsection:..."Cexp Support" for node2.html
+;.;
+
+6/24:subsection:..."Supported Targets" for node2.html
+;..;
+
+7/24:subsection:..."Supported Connection Methods" for node2.html
+;..;
+
+8/24:subsection:..."GDB Patches" for node2.html
+;.,.....;...
+
+9/24:section:.."Building" for node3.html
+;,..,..,..,.........................;.
+
+10/24:section:.."Debugging Session" for node4.html
+;.;
+
+11/24:subsection:..."Prerequisites" for node4.html
+;;
+
+12/24:subsubsectionstar:."Compilation" for node4.html
+;.......;
+
+13/24:subsubsectionstar:."Front-End" for node4.html
+;,.....;
+
+14/24:subsubsectionstar:."RTMF" for node4.html
+;.;
+
+15/24:subsubsectionstar:."Path Settings" for node4.html
+;.............;
+
+16/24:subsection:..."Starting the Debugging Agent" for node4.html
+;,.......;
+
+17/24:subsection:..."Connecting to the Target" for node4.html
+;.,.,.,......;
+
+18/24:subsubsection:...."Sharing the Console Serial Line" for node4.html
+;..,.;
+
+19/24:subsection:..."Switching Thread Context" for node4.html
+;.......,,,,,,,,.;
+
+20/24:subsection:..."Executing Subroutines on the Target" for node4.html
+;...,....,.;
+
+21/24:subsection:..."DDD Note" for node4.html
+;.......;
+
+22/24:section:.."RTEMS Specific GDB Commands" for node5.html
+;,.........,...........;.
+
+23/24:section:.."Example Session" for node6.html
+;,,.,,,,,,,;
+
+24/24:sectionstar:.."About this document ..." for node7.html
+;;.
+.
+Doing footnotes ...
+Writing image file ...
+
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+entering extended mode
+(./images.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+
+
+ *** processing 4 images ***
+
+Generating postscript images using dvips ...
+This is dvips(k) 5.95a Copyright 2005 Radical Eye Software (www.radicaleye.com)
+' TeX output 2008.07.30:1803' -> /tmp/l2h23745/image
+(-> /tmp/l2h23745/image001) <tex.pro><alt-rule.pro><8r.enc><texps.pro>
+<special.pro><color.pro><cmmi10.pfb>[1] (-> /tmp/l2h23745/image002) <tex.pro>
+<alt-rule.pro><8r.enc><texps.pro><special.pro><color.pro><cmsy10.pfb>[2] 
+(-> /tmp/l2h23745/image003) <tex.pro><alt-rule.pro><8r.enc><texps.pro>
+<special.pro><color.pro><cmmi10.pfb>[3] (-> /tmp/l2h23745/image004) <tex.pro>
+<alt-rule.pro><8r.enc><texps.pro><special.pro><color.pro><cmr10.pfb>
+<cmsy10.pfb><cmmi10.pfb>[4] 
+Converting image #3
+Converting image #1
+Converting image #2
+Converting image #4
+
+Doing section links ......
+Doing table of contents .....,,,,,,....,,,,,,,,,,,.......
+ *** Adding document-specific styles *** 
+
+*********** WARNINGS ***********  
+
+Substitution of arg to newlabelxx delayed.
+
+Done.
+tarring revision RTEMS_gdb_stub_1_5

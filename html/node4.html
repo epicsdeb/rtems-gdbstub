@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Debugging Session</TITLE>
+<META NAME="description" CONTENT="Debugging Session">
+<META NAME="keywords" CONTENT="rtems-gdb-stub">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="rtems-gdb-stub.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="rtems-gdb-stub.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html99"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html95"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html89"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html97"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html100"
+  HREF="node5.html">RTEMS Specific GDB Commands</A>
+<B> Up:</B> <A NAME="tex2html96"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html90"
+  HREF="node3.html">Building</A>
+ &nbsp; <B>  <A NAME="tex2html98"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html101"
+  HREF="node4.html#SECTION00041000000000000000">Prerequisites</A>
+<UL>
+<LI><A NAME="tex2html102"
+  HREF="node4.html#SECTION00041100000000000000">Compilation</A>
+<LI><A NAME="tex2html103"
+  HREF="node4.html#SECTION00041200000000000000">Front-End</A>
+<LI><A NAME="tex2html104"
+  HREF="node4.html#SECTION00041300000000000000">RTMF</A>
+<LI><A NAME="tex2html105"
+  HREF="node4.html#SECTION00041400000000000000">Path Settings</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html106"
+  HREF="node4.html#SECTION00042000000000000000">Starting the Debugging Agent</A>
+<LI><A NAME="tex2html107"
+  HREF="node4.html#SECTION00043000000000000000">Connecting to the Target</A>
+<UL>
+<LI><A NAME="tex2html108"
+  HREF="node4.html#SECTION00043100000000000000">Sharing the Console Serial Line</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html109"
+  HREF="node4.html#SECTION00044000000000000000">Switching Thread Context</A>
+<LI><A NAME="tex2html110"
+  HREF="node4.html#SECTION00045000000000000000">Executing Subroutines on the Target</A>
+<LI><A NAME="tex2html111"
+  HREF="node4.html#SECTION00046000000000000000">DDD Note</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000">
+Debugging Session</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+Prerequisites</A>
+</H2>
+
+<H3><A NAME="SECTION00041100000000000000">
+Compilation</A>
+</H3>
+	Code to be debugged must be compiled with the `<TT>-g</TT>' option.
+    (preferrably everything)<A NAME="tex2html3"
+  HREF="footnode.html#foot178"><SUP><SPAN CLASS="arabic">2</SPAN></SUP></A>.
+
+<P>
+Optimization Caveat: It is possible to use GDB with optimized
+	code (I do it all the time) but this may change the flow
+	of execution, inline subroutine calls and may cause
+	variables to `disappear' etc.
+
+<P>
+
+<H3><A NAME="SECTION00041200000000000000">
+Front-End</A>
+</H3>
+	You want to use a GUI frontend together with cross-gdb, e.g.,
+<PRE>
+		ddd --debugger &lt;cross_arch&gt;-rtems-gdb
+</PRE>
+
+<P>
+<EM>Note</EM>: you need to set <TT>PATH</TT> prior to starting ddd/gdb,
+    see below.  
+
+<P>
+
+<H3><A NAME="SECTION00041300000000000000">
+RTMF</A>
+</H3>
+	GDB is a quite powerful program - make sure you know how to
+	use it! The `rtems-remote' target only adds 2 new commands.
+	Everything else is off-the shelf GDB.
+	Note that not all available commands necessarily make sense
+	on this specific target.
+
+<P>
+
+<H3><A NAME="SECTION00041400000000000000">
+Path Settings</A>
+</H3>
+    Cross-debugging involves both, a host computer and the
+    target system executing the actual code. The host computer
+    needs access to <EM>the same version</EM> of the object files
+	that the target computer is executing.
+
+<P>
+Upon connection to the target, the host computer obtains
+	a list of currently loaded object files from the target.
+	In order for the host GDB being able to locate the necessary
+	object files, the <TT>PATH</TT> environment variable must point to
+	the directories containing these objects. Note that GDB
+	doesn't define a dedicated path variable for `cross-architecture
+	objects' but requires the user to set the ordinary <TT>PATH</TT>
+	that is also searched for host executables!
+	Note that <TT>PATH</TT> is an environment variable and cannot be
+	changed from within a GDB session (GDB's <TT>environ</TT> and <TT>path</TT>
+	commands only affect the <TT>PATH</TT> as seen by a native debuggee
+	and don't have any effect in a cross-gdb session).
+
+<P>
+GDB also features a <TT>load</TT> command to instruct the target
+	computer to load/link object modules. Since the target
+	computer usually sees a directory tree that is different
+	from the host, any path information is discarded from the
+	<TT>load</TT> argument - instead, the target's <TT>PATH</TT> environment
+	variable must contain the directory where the target can
+	locate the object that is to be loaded.
+
+<P>
+
+<H2><A NAME="SECTION00042000000000000000">
+Starting the Debugging Agent</A>
+</H2>
+	On the target, the debugging agent must be running.
+	It needs to be linked into the system and is started
+	by calling
+<PRE>
+  int rtems_gdb_start(int agent_prio, char *dev_name);
+</PRE>
+
+<P>
+Passing a priority of 0 lets the daemon pick its default
+	scheduling priority. The second argument defines the
+	connection method to be used. A NULL pointer lets the
+	daemon listen on TCP port 2159 (registered port number for the
+	gdb remote protocol) for an incoming connection,
+	if a string is passed, it must be the path to a character
+	device, e.g., <TT>/dev/ttyS1</TT>.
+
+<P>
+The agent can be stopped (<code>rtems_gdb_stop()</code>) and restarted
+	with a different priority and/or communication method.
+
+<P>
+<EM>Note</EM>: rtems 4.6.2 requires a patch for this to work safely
+	since the operation involves one task closing a socket
+	on which another task is blocking.
+
+<P>
+
+<H2><A NAME="SECTION00043000000000000000">
+Connecting to the Target</A>
+</H2>
+	gdb can use either serial-port, TCP or UDP connections.
+	Note that either uses certain resources on the target (e.g.,
+	the termios driver or the TCP/IP stack, respectively)
+	and a debugging session may deadlock the system if
+	the debugging agent needs a resource that is locked
+	when the debuggee runs into a breakpoint.
+
+<P>
+The syntax for connecting to a target is (TCP)
+<PRE>
+		(gdb) target rtems-remote &lt;target&gt;:2159
+</PRE>
+	or (serial)
+	 - note that the agent's serial port runs at
+	115200 8N1 - use GDB's <TT>remote baud</TT> command:
+<PRE>
+		(gdb) target rtems-remote &lt;com_port_on_host&gt;
+</PRE>
+
+<P>
+UDP connections can also be used but gdb warns against
+	them being less reliable. There is usually no point
+	using UDP if TCP is available. One important exception
+	would be if the target features a ``standalone'' UDP
+	communication channel (e.g., a simple ethernet/IP/UDP
+	packet driver/stack; such a driver/stack could be
+	used to debug TCP/IP itself) or has reduced networking
+	capabilities.
+<PRE>
+		(gdb) target rtems-remote udp:&lt;target&gt;:2159
+</PRE>
+
+<P>
+Note that <TT>rtems-remote</TT> is an extension of the
+	standard GDB `remote' target - it adds support
+	for Cexp modules (names, section addresses etc.).
+
+<P>
+Once connected to the target, the debugger is
+	attached to a dummy thread context. All user and
+	system threads are executing normally at this point.
+
+<P>
+Use the <TT>detach</TT> command to close the connection
+	to the target at any time. All stopped threads will
+	be resumed.
+
+<P>
+
+<H3><A NAME="SECTION00043100000000000000">
+Sharing the Console Serial Line</A>
+</H3>
+	If a priority less than zero is passed to <code>rtems_gdb_start()</code>
+    the agent is executed in the context of the the caller, i.e.,
+    no separate task is created. Thus, the agent may be run from
+    a shell (e.g., ``Cexp'') and take over the console line for
+    the duration of the session, i.e., until the <TT>detach</TT>
+    command is issued from GDB. In this ``foreground'' mode
+    of operation, the agent terminates after a the session is ended
+    returning control to the caller of <code>rtems_gdb_start()</code>.
+
+<P>
+A sample session example:
+<PRE>
+	    Cexp&gt;rtems_gdb_start(-1,0)
+	    GDB Daemon starting
+	&lt; scrambled output since terminal mode changed &gt;
+	    .y
+	&lt; exit from terminal program and start gdb &gt;
+	    (gdb) target rtems-remote &lt; /dev/ttySxx &gt;
+	    (gdb)    &lt; session commands &gt;
+	    (gdb) detach
+	    (gdb) quit
+	&lt; restart terminal program and resume Cexp session &gt;
+	    Cexp&gt;
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00044000000000000000">
+Switching Thread Context</A>
+</H2>
+	In order to inspect a thread's stack, registers etc.
+	it must be stopped.
+	A thread is stopped either because it runs into a
+	breakpoint or if the debugger is explicitely
+	attached to it (<TT>thread</TT> command). If you want to attach
+	to a specific thread you need to know its `id'
+	(i.e., GDB's id which is orthogonal to the RTEMS task id
+	- use <TT>info threads</TT> to obtain a task list).
+
+<P>
+Once stopped, a thread remains suspended until you
+	issue the <TT>continue</TT> command or <TT>detach</TT> (terminate
+	the session). Either of those operations lets all stopped
+	threads resume.
+
+<P>
+You can hit <TT><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$&lt;$"></SPAN>Ctrl<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&gt;$"></SPAN>-C</TT> to interrupt the target; this
+	only interrupts the `dummy'/`helper' thread and
+	attaches GDB to it.  I.e., 
+<PRE>
+		target rtems-remote xx:2159 //connect, attach to 'helper'
+</PRE>
+	At this point, the helper is stopped - you can inspect its
+	registers etc. everyone else continues normally
+<PRE>
+		info threads
+		t 14             //switch to thread ID 14
+</PRE>
+	Thread 14 is stopped. The helper remains stopped. Inspect
+	T14's registers + stack
+<PRE>
+		t 12             //switch to thread ID 12
+</PRE>
+	helper, T14 and T12 are stopped; inspect T12's registers + stack
+<PRE>
+		t 14             //switch back to thread ID 14
+</PRE>
+	helper, T14 and T12 remain stopped; inspect T14's registers + stack
+<PRE>
+		cont             //resume everything
+</PRE>
+	helper, T14 and T12 are resumed
+<PRE>
+		&lt;Ctrl&gt;-C         //interrupt
+</PRE>
+	interrupt, stop helper and attach to it - same state as
+	after connection was established.
+
+<P>
+
+<H2><A NAME="SECTION00045000000000000000">
+Executing Subroutines on the Target</A>
+</H2>
+When evaluating expressions at the <TT>(gdb)</TT> command line (e.g., within
+a <TT>call</TT> or <TT>print</TT> command) gdb may need to execute a subroutine
+on the target. For example,
+<PRE>
+		(gdb) print printf("Hello\n")
+</PRE>
+invokes the <TT>printf</TT> routine on the target, retrieves the return value
+and prints it to the <TT>gdb</TT> console.
+
+<P>
+This is actually a pretty complex operation which involves creating a dummy stack
+frame and appropriate arguments etc. on the target. Some targets' exception
+handlers may not expect modifications of the stack and might crash as a result
+of an attempt to call a routine on the target.
+
+<P>
+Also, it should be noted that the routine is always executed in the
+context of the ``current task''. Hence, the ``current task''
+
+<UL>
+<LI>must have sufficient stack space.
+</LI>
+<LI>must provide an appropriate execution environment. E.g., if the
+      current task is an ``integer-only'' task then an attempt to invoke
+      math routines may fail (crash).
+</LI>
+<LI>must not have been suspended due to an exception condition (i.e.,
+      it must not be a ``dead'' or ``killed'' thread).
+</LI>
+</UL>
+The `helper' task provides a suitable environment for the purpose of
+executing subroutines on the target.
+
+<P>
+
+<H2><A NAME="SECTION00046000000000000000">
+DDD Note</A>
+</H2>
+After reloading any object on the target (using the <TT>rtems load</TT> or
+<TT>rtems sync-objs</TT> commands) the source code displayed
+by DDD may not be current (since the commands were performed
+at the GDB level, unnoticed by <TT>ddd</TT>).
+Use <TT>ddd</TT>'s <TT>Reload Source</TT> menu entry from the
+<TT>Source</TT> pull-down menu or the equivalent accelerator key combination
+<code>&lt;Ctrl&gt;-&lt;Shift&gt;-L</code> (default) to refresh the display.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html99"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html95"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html89"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html97"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html100"
+  HREF="node5.html">RTEMS Specific GDB Commands</A>
+<B> Up:</B> <A NAME="tex2html96"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html90"
+  HREF="node3.html">Building</A>
+ &nbsp; <B>  <A NAME="tex2html98"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+till
+2008-07-30
+</ADDRESS>
+</BODY>
+</HTML>

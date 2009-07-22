@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RTEMS Specific GDB Commands</TITLE>
+<META NAME="description" CONTENT="RTEMS Specific GDB Commands">
+<META NAME="keywords" CONTENT="rtems-gdb-stub">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="rtems-gdb-stub.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="rtems-gdb-stub.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html122"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html118"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html112"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html120"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html123"
+  HREF="node6.html">Example Session</A>
+<B> Up:</B> <A NAME="tex2html119"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html113"
+  HREF="node4.html">Debugging Session</A>
+ &nbsp; <B>  <A NAME="tex2html121"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000">
+RTEMS Specific GDB Commands</A>
+</H1>
+
+<UL>
+<LI>use <TT>rtems load</TT> instead of <TT>load</TT>.
+
+<P>
+</LI>
+<LI>use <TT>target rtems-remote</TT> instead of <TT>target remote</TT>.
+With statically linked applications the plain <TT>remote</TT>
+target is enough - the enhanced target version <TT>rtems-remote</TT> has added
+support for loadable modules: it queries the target for
+a list of loaded objects and their section addresses.
+
+<P>
+</LI>
+<LI><TT>rtems sync-objs</TT> (re)-synchronize gdb's file and section information
+	  with what's current on the target. Use this command if you
+	  added, removed or re-loaded modules from the Cexp<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&gt;$"></SPAN> prompt
+	  instead of using <TT>rtems load</TT> from inside GDB.
+
+<P>
+</LI>
+<LI><TT>info threads</TT> semantics have slightly changed. Only a list
+	  of thread IDs/names is retrieved but not their stack frame
+	  or IP address (impossible without stopping all threads).
+</LI>
+</UL>
+
+<P>
+<EM>Note that even if you do not use Cexp or the <TT>rtems-remote</TT>
+target you still must use a patched <TT>gdb</TT> in combination with this
+stub. One (small but important) change the patch achieves is avoiding
+to attach to all of the tasks running on the target  (and thus stop them) 
+which would bring the session to a grinding halt.</EM>
+
+<P>
+<code>&lt;&lt;TODO&gt;&gt;</code>
+
+<P>
+More details; more commands; more implementation specifica
+
+<P>
+<code>&lt;&lt;/TODO&gt;&gt;</code>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html122"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html118"
+  HREF="rtems-gdb-stub.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html112"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html120"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html123"
+  HREF="node6.html">Example Session</A>
+<B> Up:</B> <A NAME="tex2html119"
+  HREF="rtems-gdb-stub.html">GDB Agent for RTEMS</A>
+<B> Previous:</B> <A NAME="tex2html113"
+  HREF="node4.html">Debugging Session</A>
+ &nbsp; <B>  <A NAME="tex2html121"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+till
+2008-07-30
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,3 +1,12 @@
+rtems-gdbstub (1.5-2) unstable; urgency=low
+
+  * Install headers
+  * Add missing bspExt dependency
+  * Patches
+  *   Add extern "C" to headers
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Tue, 11 Aug 2009 16:11:00 -0400
+
 rtems-gdbstub (1.5-1) unstable; urgency=low
 
   * Initial release

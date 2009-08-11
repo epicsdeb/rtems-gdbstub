@@ -2,6 +2,10 @@
 #ifndef RTEMS_GDB_STUB_H
 #define RTEMS_GDB_STUB_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Public interface header */
 
 /* The daemon's TID */
@@ -102,5 +106,9 @@ rtems_gdb_stop(int override);
 
 /* target dependent code may set this to block module unloading */
 extern int rtems_gdb_nounload;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -5,6 +5,10 @@
 
 #include <bsp/vectors.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* braindead definition; BSP_Exception_frame is NOT quite
  * identical with CPU_Interrupt_frame for new exception processing;
  * why???
@@ -45,5 +49,9 @@ typedef struct FrameRec_ {
 	struct FrameRec_ *up;
 	unsigned 		  lr;
 } FrameRec, *Frame;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

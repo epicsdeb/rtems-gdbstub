@@ -5,6 +5,10 @@
 
 #include <rtems/score/cpu.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef ASM
 
 typedef struct _M68k_GdbFrameRec * RtemsDebugFrame;
@@ -123,5 +127,9 @@ typedef struct FrameRec_ {
 #define PC(f)       ((unsigned long)(f)->ret_info.pc)
 
 #endif /* ASM */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

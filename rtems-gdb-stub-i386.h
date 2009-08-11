@@ -5,6 +5,10 @@
 
 #include <rtems/score/cpu.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* braindead definition; BSP_Exception_frame is NOT quite
  * identical with CPU_Interrupt_frame for new exception processing;
  * why???
@@ -41,6 +45,10 @@ typedef struct FrameRec_ {
 #define FLIP_REGS(diff) do { asm volatile("add %0, %%esp; add %0, %%ebp"::"r"(diff)); } while(0)
 #define SP(f)       ((unsigned long)(f)->esp0 + 5*4)
 #define PC(f)       ((unsigned long)(f)->eip)
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif

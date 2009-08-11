@@ -55,6 +55,8 @@ install-$(2)-$(1):
 	$(MAKE) ARCH=x-$(2)-$(1) RTEMS_MAKEFILE_PATH=/usr/$(2)-rtems$(RV)/$(1) \
 CEXP_SOURCE_PATH=/usr/$(2)-rtems$(RV)/$(1)/lib/include \
 RTEMS_SITE_INSTALLDIR=$$($(2)_$(1)_INSTDIR) install
+	install -d $$($(2)_$(1)_INSTDIR)/lib/include
+	install -m 644 -t $$($(2)_$(1)_INSTDIR)/lib/include rtems-gdb-stub.h rtems-gdb-stub-i386.h rtems-gdb-stub-m68k.h rtems-gdb-stub-ppc-shared.h
 
 install-all += install-$(2)-$(1)
 
@@ -89,8 +91,10 @@ install-indep:
 	dh_clean -k -i 
 	dh_installdirs -i
 
-	install -d debian/rtems-gdbstub-doc/usr/share/rtems-gdbstub
-	install -m 644 -t debian/rtems-gdbstub-doc/usr/share/rtems-gdbstub LICENSE ChangeLog
+	install -d debian/rtems-gdbstub-doc/usr/share/doc/rtems-gdbstub
+	install -m 644 -t debian/rtems-gdbstub-doc/usr/share/doc/rtems-gdbstub LICENSE ChangeLog
+	install -d debian/rtems-gdbstub-doc/usr/share/doc/rtems-gdbstub/html
+	install -m 644 -t debian/rtems-gdbstub-doc/usr/share/doc/rtems-gdbstub/html html/*
 
 	dh_install -i
 

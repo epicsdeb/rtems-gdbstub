@@ -1,0 +1,3 @@
+usr/i386-rtems*/pc386/bin/rtems-gdb-stub.obj
+usr/i386-rtems*/pc386/lib/librtems-gdb-stub.a
+usr/i386-rtems*/pc386/lib/include

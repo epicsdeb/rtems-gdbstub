@@ -1,0 +1,3 @@
+usr/powerpc-rtems*/mvme3100/bin/rtems-gdb-stub.obj
+usr/powerpc-rtems*/mvme3100/lib/librtems-gdb-stub.a
+usr/powerpc-rtems*/mvme3100/lib/include

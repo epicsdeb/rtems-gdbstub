@@ -1,3 +1,9 @@
+rtems-gdbstub (1.5-3) unstable; urgency=low
+
+  * Revise dependencies
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Fri, 18 Dec 2009 14:30:57 -0500
+
 rtems-gdbstub (1.5-2) unstable; urgency=low
 
   * Install headers

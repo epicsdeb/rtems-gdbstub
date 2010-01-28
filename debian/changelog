@@ -1,3 +1,9 @@
+rtems-gdbstub (1.5-4) unstable; urgency=low
+
+  * Build for mvme2307
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Thu, 28 Jan 2010 01:40:42 -0500
+
 rtems-gdbstub (1.5-3) unstable; urgency=low
 
   * Revise dependencies

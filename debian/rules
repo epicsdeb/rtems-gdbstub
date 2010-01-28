@@ -22,7 +22,8 @@ build/rtems-gdbstub-$(1):: build-$(1)-stamp
 
 build-$(1)-stamp:
 	echo "build $$@"
-	$(MAKE) ARCH=x-$(1) RTEMS_MAKEFILE_PATH=$$($1_bspbase)
+	$(MAKE) ARCH=x-$(1) RTEMS_MAKEFILE_PATH=$$($1_bspbase) \
+HCHECK=/dev/null
 
 	touch $$@
 
@@ -31,6 +32,7 @@ install/rtems-gdbstub-$(1)::
 	install -d $(CURDIR)/debian/tmp$$($1_bspbase)/bin
 	$(MAKE) ARCH=x-$(1) RTEMS_MAKEFILE_PATH=$$($1_bspbase) \
 RTEMS_SITE_INSTALLDIR=$(CURDIR)/debian/tmp$$($1_bspbase) \
+HCHECK=/dev/null \
 install
 
 	install -d $(CURDIR)/debian/tmp$$($1_bspbase)/lib/include

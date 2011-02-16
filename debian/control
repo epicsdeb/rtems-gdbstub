@@ -15,6 +15,7 @@ Homepage: http://www.slac.stanford.edu/~strauman/rtems/software.html
 Package: rtems-gdbstub-doc
 Section: doc
 Architecture: all
+Depends: ${misc:Depends}
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged
  .
@@ -22,7 +23,7 @@ Description: A GDB server
 
 Package: rtems-gdbstub-mvme2100
 Architecture: all
-Depends: ${rtems:Depends}
+Depends: ${rtems:Depends}, ${misc:Depends}
 Recommends: rtems-gdbstub-doc
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged
@@ -31,7 +32,7 @@ Description: A GDB server
 
 Package: rtems-gdbstub-mvme2307
 Architecture: all
-Depends: ${rtems:Depends}
+Depends: ${rtems:Depends}, ${misc:Depends}
 Recommends: rtems-gdbstub-doc
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged
@@ -40,7 +41,7 @@ Description: A GDB server
 
 Package: rtems-gdbstub-mvme3100
 Architecture: all
-Depends: ${rtems:Depends}
+Depends: ${rtems:Depends}, ${misc:Depends}
 Recommends: rtems-gdbstub-doc
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged
@@ -49,7 +50,7 @@ Description: A GDB server
 
 Package: rtems-gdbstub-mvme5500
 Architecture: all
-Depends: ${rtems:Depends}
+Depends: ${rtems:Depends}, ${misc:Depends}
 Recommends: rtems-gdbstub-doc
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged
@@ -58,7 +59,7 @@ Description: A GDB server
 
 Package: rtems-gdbstub-pc386
 Architecture: all
-Depends: ${rtems:Depends}
+Depends: ${rtems:Depends}, ${misc:Depends}
 Recommends: rtems-gdbstub-doc
 Description: A GDB server
  A remote GDB server which allows RTEMS targets to be debugged

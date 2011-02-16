@@ -134,9 +134,5 @@ License:
     conditions before using those packages.
 
 
-On Debian systems, the complete text of the BSD License can be
-found in `/usr/share/common-licenses/BSD'.
-
-
-The Debian packaging is (C) 2009, Michael Davidsaver <mdavidsaver@bnl.gov> and
+The Debian packaging is (C) 2009-2011, Michael Davidsaver <mdavidsaver@bnl.gov> and
 is licensed under the GPL, see `/usr/share/common-licenses/GPL'.

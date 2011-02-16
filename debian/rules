@@ -42,9 +42,9 @@ install
 
 endef
 
-$(foreach p,$(DEB_ARCH_PACKAGES),$(eval $(call bsprule,$(p:rtems-gdbstub-%=%))))
+$(foreach p,$(filter-out %-doc,$(DEB_INDEP_PACKAGES)),$(eval $(call bsprule,$(p:rtems-gdbstub-%=%))))
 
-common-binary-fixup-arch::
+common-indep-fixup-arch::
 	dh_rtems
 
 clean::

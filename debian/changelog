@@ -1,3 +1,10 @@
+rtems-gdbstub (1.5-5) unstable; urgency=low
+
+  * Switch any to all
+      Target binaries are independent of host arch.
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Wed, 16 Feb 2011 16:08:25 -0500
+
 rtems-gdbstub (1.5-4) unstable; urgency=low
 
   * Build for mvme2307

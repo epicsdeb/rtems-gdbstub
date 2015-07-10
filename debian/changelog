@@ -1,3 +1,9 @@
+rtems-gdbstub (1.5-6) unstable; urgency=medium
+
+  * use dh 7 rules
+
+ -- Michael Davidsaver <mdavidsaver@bnl.gov>  Fri, 10 Jul 2015 13:43:05 -0400
+
 rtems-gdbstub (1.5-5) unstable; urgency=low
 
   * Switch any to all

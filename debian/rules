@@ -1,55 +1,61 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/utils.mk
-
-# Don't strip
-DEB_DH_STRIP_ARGS := -Xusr
-
-DEB_INSTALL_DOCS_rtems-gdbstub-doc := html
+export DH_VERBOSE=1
 
 RV=4.9
 
-# $1 is bsp name (ie mvme3100)
-define bsprule
+%:
+	dh --with rtems $@
 
-# This install prefix w/ arch
-# This will be /usr/powerpc-rtems4.9/mvme3100 or similar
-$1_bspbase=$(dir $(wildcard /usr/*-rtems$(RV)/$1/Makefile.inc))
+override_dh_auto_build:
+	$(MAKE) ARCH=x-pc386 RTEMS_MAKEFILE_PATH=/usr/i386-rtems$(RV)/pc386 HCHECK=/dev/null
+	$(MAKE) ARCH=x-mvme2100 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme2100 HCHECK=/dev/null
+	$(MAKE) ARCH=x-mvme2307 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme2307 HCHECK=/dev/null
+	$(MAKE) ARCH=x-mvme3100 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme3100 HCHECK=/dev/null
+	$(MAKE) ARCH=x-mvme5500 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme5500 HCHECK=/dev/null
 
-build/rtems-gdbstub-$(1):: build-$(1)-stamp
+HEADERS=rtems-gdb-stub.h rtems-gdb-stub-i386.h rtems-gdb-stub-m68k.h \
+        rtems-gdb-stub-ppc-shared.h rtems-gdb-stubP.h
 
-build-$(1)-stamp:
-	echo "build $$@"
-	$(MAKE) ARCH=x-$(1) RTEMS_MAKEFILE_PATH=$$($1_bspbase) \
-HCHECK=/dev/null
+override_dh_auto_test: # no-op
 
-	touch $$@
+override_dh_auto_install:
+	install -d debian/tmp/usr/i386-rtems$(RV)/pc386/bin
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme2100/bin
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme2307/bin
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme3100/bin
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme5500/bin
 
-install/rtems-gdbstub-$(1)::
-	echo "install $$@"
-	install -d $(CURDIR)/debian/tmp$$($1_bspbase)/bin
-	$(MAKE) ARCH=x-$(1) RTEMS_MAKEFILE_PATH=$$($1_bspbase) \
-RTEMS_SITE_INSTALLDIR=$(CURDIR)/debian/tmp$$($1_bspbase) \
-HCHECK=/dev/null \
-install
+	install -d debian/tmp/usr/i386-rtems$(RV)/pc386/lib/include
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme2100/lib/include
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme2307/lib/include
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme3100/lib/include
+	install -d debian/tmp/usr/powerpc-rtems$(RV)/mvme5500/lib/include
 
-	install -d $(CURDIR)/debian/tmp$$($1_bspbase)/lib/include
-	install -m 644 -t $(CURDIR)/debian/tmp$$($1_bspbase)/lib/include \
-   rtems-gdb-stub.h rtems-gdb-stub-i386.h rtems-gdb-stub-m68k.h \
-   rtems-gdb-stub-ppc-shared.h rtems-gdb-stubP.h
+	$(MAKE) ARCH=x-pc386 RTEMS_MAKEFILE_PATH=/usr/i386-rtems$(RV)/pc386 HCHECK=/dev/null RTEMS_SITE_INSTALLDIR=/usr/i386-rtems$(RV)/pc386
+	$(MAKE) ARCH=x-mvme2100 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme2100 HCHECK=/dev/null RTEMS_SITE_INSTALLDIR=/usr/powerpc-rtems$(RV)/mvme2100
+	$(MAKE) ARCH=x-mvme2307 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme2307 HCHECK=/dev/null RTEMS_SITE_INSTALLDIR=/usr/powerpc-rtems$(RV)/mvme2307
+	$(MAKE) ARCH=x-mvme3100 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme3100 HCHECK=/dev/null RTEMS_SITE_INSTALLDIR=/usr/powerpc-rtems$(RV)/mvme3100
+	$(MAKE) ARCH=x-mvme5500 RTEMS_MAKEFILE_PATH=/usr/powerpc-rtems$(RV)/mvme5500 HCHECK=/dev/null RTEMS_SITE_INSTALLDIR=/usr/powerpc-rtems$(RV)/mvme5500
 
-endef
+	install -m 644 x-pc386/*.obj debian/tmp/usr/i386-rtems$(RV)/pc386/bin/
+	install -m 644 x-mvme2100/*.obj debian/tmp/usr/powerpc-rtems$(RV)/mvme2100/bin/
+	install -m 644 x-mvme2307/*.obj debian/tmp/usr/powerpc-rtems$(RV)/mvme2307/bin/
+	install -m 644 x-mvme3100/*.obj debian/tmp/usr/powerpc-rtems$(RV)/mvme3100/bin/
+	install -m 644 x-mvme5500/*.obj debian/tmp/usr/powerpc-rtems$(RV)/mvme5500/bin/
 
-$(foreach p,$(filter-out %-doc,$(DEB_INDEP_PACKAGES)),$(eval $(call bsprule,$(p:rtems-gdbstub-%=%))))
+	install -m 644 x-pc386/*.a debian/tmp/usr/i386-rtems$(RV)/pc386/lib/
+	install -m 644 x-mvme2100/*.a debian/tmp/usr/powerpc-rtems$(RV)/mvme2100/lib/
+	install -m 644 x-mvme2307/*.a debian/tmp/usr/powerpc-rtems$(RV)/mvme2307/lib/
+	install -m 644 x-mvme3100/*.a debian/tmp/usr/powerpc-rtems$(RV)/mvme3100/lib/
+	install -m 644 x-mvme5500/*.a debian/tmp/usr/powerpc-rtems$(RV)/mvme5500/lib/
 
-common-indep-fixup-arch::
-	dh_rtems
+	install -m 644 -t debian/tmp/usr/i386-rtems$(RV)/pc386/lib/include $(HEADERS)
+	install -m 644 -t debian/tmp/usr/powerpc-rtems$(RV)/mvme2100/lib/include $(HEADERS)
+	install -m 644 -t debian/tmp/usr/powerpc-rtems$(RV)/mvme2307/lib/include $(HEADERS)
+	install -m 644 -t debian/tmp/usr/powerpc-rtems$(RV)/mvme3100/lib/include $(HEADERS)
+	install -m 644 -t debian/tmp/usr/powerpc-rtems$(RV)/mvme5500/lib/include $(HEADERS)
 
-clean::
-	rm -f build-*
+override_dh_auto_clean:
 	rm -rf x-*
-
-info:
-	echo "$(DEB_ARCH_PACKAGES)"

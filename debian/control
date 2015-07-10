@@ -2,7 +2,7 @@ Source: rtems-gdbstub
 Section: devel
 Priority: extra
 Maintainer: Michael Davidsaver <mdavidsaver@bnl.gov>
-Build-Depends: debhelper (>= 7), rtems-debhelper (>= 5), cdbs,
+Build-Depends: debhelper (>= 7), rtems-debhelper (>= 5),
                rtems-libbspext-mvme2100, rtems-cexp-mvme2100,
                rtems-libbspext-mvme2307, rtems-cexp-mvme2307,
                rtems-libbspext-mvme3100, rtems-cexp-mvme3100,
